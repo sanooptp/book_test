@@ -5,12 +5,13 @@ from .models import Books, Collection
 from .serializer import BooksSerializer, CollectionSerializer
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.authentication import SessionAuthentication
 import json
 
 class BooksListView(generics.ListAPIView):
-    queryset = Books.objects.filter(pk=1)
+    queryset = Books.objects.all()
     serializer_class = BooksSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     def get(self, request):
         queryset = self.get_queryset()
         user = request.user.username

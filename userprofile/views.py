@@ -20,3 +20,5 @@ class UserDetail(generics.RetrieveAPIView):
 class AddUser(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserRegisterSerializer
+
+
